@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MyWebApi.Net8.Common\MyWebApi.Net8.Common.csproj" />
+    <ProjectReference Include="..\MyWebApi.Net8.Extension\MyWebApi.Net8.Extension.csproj" />
+    <ProjectReference Include="..\MyWebApi.Net8.ServiceDefaults\MyWebApi.Net8.ServiceDefaults.csproj" />
+    <ProjectReference Include="..\MyWebApi.Net8.Services\MyWebApi.Net8.Services.csproj" />
+  </ItemGroup>
+
+</Project>

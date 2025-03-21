@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <!--<Nullable>enable</Nullable>-->
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="10.0.0" />
+    <PackageReference Include="Autofac.Extras.DynamicProxy" Version="7.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="9.0.2" />
+    <PackageReference Include="StackExchange.Redis" Version="2.8.24" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MyWebApi.Net8.Common\MyWebApi.Net8.Common.csproj" />
+    <ProjectReference Include="..\MyWebApi.Net8.IServices\MyWebApi.Net8.IServices.csproj" />
+    <ProjectReference Include="..\MyWebApi.Net8.Model\MyWebApi.Net8.Model.csproj" />
+    <ProjectReference Include="..\MyWebApi.Net8.Repository\MyWebApi.Net8.Repository.csproj" />
+    <ProjectReference Include="..\MyWebApi.Net8.Services\MyWebApi.Net8.Services.csproj" />
+  </ItemGroup>
+
+</Project>
