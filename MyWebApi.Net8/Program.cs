@@ -1,24 +1,12 @@
 
 using Autofac;
-using Autofac.Core;
 using Autofac.Extensions.DependencyInjection;
-using AutoMapper;
-using Elsa.Extensions;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Mvc.Controllers;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using Microsoft.IdentityModel.Tokens;
 using MyWebApi.Net8.Common;
 using MyWebApi.Net8.Common.Core;
 using MyWebApi.Net8.Common.Option;
 using MyWebApi.Net8.Extension;
 using MyWebApi.Net8.Extension.ServiceExtensions;
-using MyWebApi.Net8.IServices;
-using MyWebApi.Net8.Model;
-using MyWebApi.Net8.Repository;
-using MyWebApi.Net8.Repository.Base;
-using MyWebApi.Net8.Services;
-using System.Text;
+
 
 namespace MyWebApi.Net8;
 
@@ -32,8 +20,7 @@ public class Program
         builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory()).ConfigureContainer<ContainerBuilder>(builder =>
         {
             builder.RegisterModule(new AutofacModuleRegister());
-        })
-            .ConfigureAppConfiguration((hostingContext, config) =>
+        }).ConfigureAppConfiguration((hostingContext, config) =>
             {
                 //config.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
                 hostingContext.Configuration.ConfigureApplication();
@@ -47,7 +34,7 @@ public class Program
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
 
-     
+
 
         //添加AutoMapper（实体Dto和数据库交互，model和用户交互，中间就需要用到映射，用model和数据库交互存在数据库的安全隐患）
         builder.Services.AddAutoMapper(typeof(AutoMapperConfig));
@@ -81,9 +68,9 @@ public class Program
         //    option.AddPolicy("SuperAdmin", policy => policy.RequireRole("SuperAdmin").Build());
         //});
 
-       // builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+        // builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-      //  builder.Services.AddElsa(elsa => elsa.AddWorkflowsFrom<Program>().UseHttp());
+        // builder.Services.AddElsa(elsa => elsa.AddWorkflowsFrom<Program>().UseHttp());
 
         // Enable Elsa HTTP module (for HTTP related activities). 
 
@@ -99,8 +86,9 @@ public class Program
             app.UseSwagger();
             app.UseSwaggerUI();
         }
+
         app.UseHttpsRedirection();
-        app.UseAuthorization();
+         app.UseAuthorization();
         app.MapControllers();
         //app.UseWorkflows();
         app.Run();
