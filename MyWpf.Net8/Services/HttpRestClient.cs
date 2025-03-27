@@ -49,8 +49,9 @@ namespace MyWpf.Net8.Services
                 request.AddHeader("Content-Type", baseRequest.ContentType);
 
                 if (baseRequest.Parameter != null)
-                    request.AddParameter("param", JsonConvert.SerializeObject(baseRequest.Parameter), ParameterType.RequestBody);
-                //client.BaseUrl = new Uri(webUrl + baseRequest.Route);
+                    // request.AddParameter("param", JsonConvert.SerializeObject(baseRequest.Parameter), ParameterType.RequestBody);
+                    //client.BaseUrl = new Uri(webUrl + baseRequest.Route);
+                    request.AddBody(baseRequest.Parameter);
                 var response = await client.ExecuteAsync(request);
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                     return JsonConvert.DeserializeObject<ApiResponse<T>>(response.Content);

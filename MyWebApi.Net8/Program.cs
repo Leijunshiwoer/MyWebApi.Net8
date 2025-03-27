@@ -71,7 +71,16 @@ public class Program
         //});
 
         // builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-
+        builder.Services.AddCors(options =>
+        {
+            options.AddPolicy("any", builder =>
+            {
+                builder.SetIsOriginAllowed(_ => true)
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowCredentials();
+            });
+        });
 
         #region deepseek
 
