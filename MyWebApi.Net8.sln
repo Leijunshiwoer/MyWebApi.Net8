@@ -21,6 +21,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyWebApi.Net8.Services", "M
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyWebApi.Net8.Extension", "MyWebApi.Net8.Extension\MyWebApi.Net8.Extension.csproj", "{FC41A910-73BD-4AB5-A2C7-1160838D2DB7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyWebApi.Net8.WorkFlow", "MyWebApi.Net8.WorkFlow\MyWebApi.Net8.WorkFlow.csproj", "{0672AE65-1320-4BCB-A66E-FAB7D2B8F60A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyWpf.Net8", "MyWpf.Net8\MyWpf.Net8.csproj", "{ED26D894-E7D4-4BCF-858A-5282070F273E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +67,14 @@ Global
 		{FC41A910-73BD-4AB5-A2C7-1160838D2DB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC41A910-73BD-4AB5-A2C7-1160838D2DB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC41A910-73BD-4AB5-A2C7-1160838D2DB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0672AE65-1320-4BCB-A66E-FAB7D2B8F60A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0672AE65-1320-4BCB-A66E-FAB7D2B8F60A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0672AE65-1320-4BCB-A66E-FAB7D2B8F60A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0672AE65-1320-4BCB-A66E-FAB7D2B8F60A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED26D894-E7D4-4BCF-858A-5282070F273E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED26D894-E7D4-4BCF-858A-5282070F273E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED26D894-E7D4-4BCF-858A-5282070F273E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED26D894-E7D4-4BCF-858A-5282070F273E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

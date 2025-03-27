@@ -19,6 +19,7 @@
     <ProjectReference Include="..\MyWebApi.Net8.Model\MyWebApi.Net8.Model.csproj" />
     <ProjectReference Include="..\MyWebApi.Net8.Repository\MyWebApi.Net8.Repository.csproj" />
     <ProjectReference Include="..\MyWebApi.Net8.Services\MyWebApi.Net8.Services.csproj" />
+    <ProjectReference Include="..\MyWebApi.Net8.WorkFlow\MyWebApi.Net8.WorkFlow.csproj" />
   </ItemGroup>
 
 </Project>

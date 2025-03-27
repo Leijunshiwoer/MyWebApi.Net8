@@ -1,40 +1,42 @@
-
 using Autofac;
+using Autofac.Core;
 using Autofac.Extensions.DependencyInjection;
+using DeepSeek.AspNetCore;
 using MyWebApi.Net8.Common;
 using MyWebApi.Net8.Common.Core;
 using MyWebApi.Net8.Common.Option;
 using MyWebApi.Net8.Extension;
 using MyWebApi.Net8.Extension.ServiceExtensions;
-
+using MyWebApi.Net8.WorkFlow.StepBodys;
+using MyWebApi.Net8.WorkFlow.WorkFlows;
+using WorkflowCore.Interface;
 
 namespace MyWebApi.Net8;
-
 public class Program
 {
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
         builder.AddServiceDefaults();
-
+        builder.Services.AddWorkflowSetup();
         builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory()).ConfigureContainer<ContainerBuilder>(builder =>
         {
             builder.RegisterModule(new AutofacModuleRegister());
         }).ConfigureAppConfiguration((hostingContext, config) =>
-            {
-                //config.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
-                hostingContext.Configuration.ConfigureApplication();
-            });
+        {
+            //config.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+            hostingContext.Configuration.ConfigureApplication();
+        });
 
         builder.ConfigureApplication();
+
+        
         // Add services to the container.
         //  builder.Services.Replace(ServiceDescriptor.Transient<IControllerActivator, ServiceBasedControllerActivator>());
         builder.Services.AddControllers();
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
-
-
 
         //添加AutoMapper（实体Dto和数据库交互，model和用户交互，中间就需要用到映射，用model和数据库交互存在数据库的安全隐患）
         builder.Services.AddAutoMapper(typeof(AutoMapperConfig));
@@ -70,14 +72,23 @@ public class Program
 
         // builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-        // builder.Services.AddElsa(elsa => elsa.AddWorkflowsFrom<Program>().UseHttp());
 
-        // Enable Elsa HTTP module (for HTTP related activities). 
+        #region deepseek
+
+        var apiKey = builder.Configuration["DeepSeekApiKey"];
+        builder.Services.AddDeepSeek(option =>
+        {
+            option.BaseAddress = new Uri("https://api.deepseek.com");
+            option.Timeout = TimeSpan.FromSeconds(300);
+            option.DefaultRequestHeaders.TryAddWithoutValidation("Authorization", "Bearer " + apiKey);
+        });
+
+        #endregion
 
         var app = builder.Build();
+       
         app.ConfigureApplication();
         app.UseApplicationSetup();
-
         app.MapDefaultEndpoints();
 
         // Configure the HTTP request pipeline.
@@ -86,11 +97,10 @@ public class Program
             app.UseSwagger();
             app.UseSwaggerUI();
         }
-
         app.UseHttpsRedirection();
-         app.UseAuthorization();
+        app.UseAuthorization();
+        app.UseWorkflow();
         app.MapControllers();
-        //app.UseWorkflows();
         app.Run();
     }
 }
