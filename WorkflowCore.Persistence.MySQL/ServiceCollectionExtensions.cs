@@ -1,12 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.Extensions.DependencyInjection;
-
+﻿using System;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using WorkflowCore.Interface;
 using WorkflowCore.Models;
 using WorkflowCore.Persistence.EntityFramework.Services;
 using WorkflowCore.Persistence.MySQL;
 
-namespace MyWebApi.Net8.Extension.ServiceExtensions.WorkFlowCore
+namespace Microsoft.Extensions.DependencyInjection
 {
     public static class ServiceCollectionExtensions
     {
