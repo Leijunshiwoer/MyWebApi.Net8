@@ -83,7 +83,7 @@ public class WeatherForecastController : ControllerBase
         // var str = await _caching.GetStringAsync(cacheKey);
         // await Console.Out.WriteAsync(str);
         // return string.Empty;
-        await _workflowHost.StartWorkflow(nameof(HelloWorkFlow));
+       var a= await _workflowHost.StartWorkflow(nameof(HelloWorkFlow));
         return "OK";
     }
 

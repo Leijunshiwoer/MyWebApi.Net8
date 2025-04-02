@@ -18,7 +18,7 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
         builder.AddServiceDefaults();
-        builder.Services.AddWorkflowSetup();
+       
         builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory()).ConfigureContainer<ContainerBuilder>(builder =>
         {
             builder.RegisterModule(new AutofacModuleRegister());
@@ -69,7 +69,7 @@ public class Program
         //    option.AddPolicy("Client", policy => policy.RequireClaim("Client").Build());
         //    option.AddPolicy("SuperAdmin", policy => policy.RequireRole("SuperAdmin").Build());
         //});
-
+        builder.Services.AddWorkflowSetup();
         // builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         builder.Services.AddCors(options =>
         {
